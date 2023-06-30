@@ -2,8 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Load Calculator</title>
-    <script type="text/javascript" src="calculator.js"></script>
+    <title>Loan Calculator</title>
     <link rel="stylesheet" href="calculator.css">
   </head>
   <body>
@@ -31,5 +30,13 @@
         <span id="monthly-payment"></span>
       </div>
     </section>
+    <!-- include JS for Jasmine -->
+    <script src="https://unpkg.com/jasmine-core@4.1.0/lib/jasmine-core/jasmine.js"></script>
+    <script src="https://unpkg.com/jasmine-core@4.1.0/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="https://unpkg.com/jasmine-core@4.1.0/lib/jasmine-core/boot0.js"></script>
+    <script src="https://unpkg.com/jasmine-core@4.1.0/lib/jasmine-core/boot1.js"></script>
+    <!-- include your JS & test file -->
+    <script type="text/javascript" src="calculator.js"></script>
+    <script type="text/javascript" src="calculator.test.js"></script>
   </body>
 </html>
