@@ -27,9 +27,9 @@ function setupIntialValues() {
   // default values in the inputs
   // let something equal default value
   let values = {
-    amount: "10000",
-    years: "5",
-    rate: "0.07",
+    amount: 10000,
+    years: 5,
+    rate: 0.07,
   };
   // populate form with these default values
   document.getElementById("loan-amount").value = values["amount"];
@@ -57,9 +57,9 @@ function update() {
 // function calculateMonthlyPayment modifies values of values object from text to numbers
 function calculateMonthlyPayment(values) {
   // object of values (each value is still in string format so needs to be converted to float)
-  let principle = parseFloat(values["amount"]);
-  let years = parseFloat(values["years"]);
-  let yearlyRate = parseFloat(values["rate"]);
+  let principle = values["amount"];
+  let years = values["years"];
+  let yearlyRate = values["rate"];
   // n = total number of payments (years * 12)
   let numPayments = years * 12;
   // i = periodic interest rate (in our case yearly rate / 12)
