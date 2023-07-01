@@ -87,6 +87,72 @@ function getTestValues(i) {
   }
 }
 
+// TEST FOR ACCURATE CALCULATIONS
+describe("calculateMonthlyPayment is calculating accurately", function () {
+  it("monthlyPaymentNum is accurate when inputs are valid", function () {
+    let principle = 10000;
+    let years = (values = 10);
+    let yearlyRate = 0.07;
+    // n = total number of payments (years * 12)
+    let numPayments = years * 12;
+    // i = periodic interest rate (in our case yearly rate / 12)
+    let periodicRate = yearlyRate / 12;
+    // calculate monthly payment
+    // monthlyPayment = (p * i)/(1-(1+i)^-n)
+    let monthlyPaymentNum =
+      (principle * periodicRate) / (1 - (1 + periodicRate) ** -numPayments);
+    expect(monthlyPaymentNum).toBeCloseTo(116.1084792, 4);
+  });
+  it("monthlyPaymentNum is accurate when inputs are decimals", function () {
+    let principle = 10000.11111;
+    let years = 10.22222;
+    let yearlyRate = 0.0713333;
+    // n = total number of payments (years * 12)
+    let numPayments = years * 12;
+    // i = periodic interest rate (in our case yearly rate / 12)
+    let periodicRate = yearlyRate / 12;
+    // calculate monthly payment
+    // monthlyPayment = (p * i)/(1-(1+i)^-n)
+    let monthlyPaymentNum =
+      (principle * periodicRate) / (1 - (1 + periodicRate) ** -numPayments);
+    expect(monthlyPaymentNum).toBeCloseTo(115.0574414, 4);
+  });
+  //
+  // total number of payments is input years * 12 months
+  // it("total number of payments is calculated correctly", function () {
+  //   // test when object has valid values
+  //   values = getTestValues("valid-values");
+  //   expect(values["amount"] * 12).toEqual(10000 * 12);
+  //   // test when object has decimal-values
+  //   values = getTestValues("decimal-values");
+  // test when object has zero-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+  // });
+  //
+  // periodic interest rate is input rate / 12 months
+  // it("periodic interest rate is correct", function () {
+  // test when object has valid values
+  // test when object has zero-values
+  // test when object has decimal-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+});
+
 // PARAMETERS VALID
 describe("calculateMonthlyPayment has required parameters", function () {
   // parameter is an object
@@ -194,73 +260,6 @@ describe("calculateMonthlyPayment has valid values", function () {
   // test when object has string values
   // test when object has valid values
   //   it("values are within range", function () {
-  // test when object has valid values
-  // test when object has zero-values
-  // test when object has decimal-values
-  // test when object has invalid rate
-  // test when input is empty-object
-  // test when input is null
-  // test when object has null-values
-  // test when object has negative-values
-  // test when input is an array
-  // test when object has array values
-  // test when input is a string
-  // test when object has string values
-});
-
-// TEST FOR ACCURATE CALCULATIONS
-describe("calculateMonthlyPayment is calculating accurately", function () {
-  it("monthlyPaymentNum is accurate when inputs are valid", function () {
-    let principle = 10000;
-    let years = (values = 10);
-    let yearlyRate = 0.07;
-    // n = total number of payments (years * 12)
-    let numPayments = years * 12;
-    // i = periodic interest rate (in our case yearly rate / 12)
-    let periodicRate = yearlyRate / 12;
-    // calculate monthly payment
-    // monthlyPayment = (p * i)/(1-(1+i)^-n)
-    let monthlyPaymentNum =
-      (principle * periodicRate) / (1 - (1 + periodicRate) ** -numPayments);
-    expect(monthlyPaymentNum).toBeCloseTo(116.1084792, 4);
-  });
-  it("monthlyPaymentNum is accurate when inputs are decimals", function () {
-    let principle = 10000.11111;
-    let years = 10.22222;
-    let yearlyRate = 0.0713333;
-    // n = total number of payments (years * 12)
-    let numPayments = years * 12;
-    // i = periodic interest rate (in our case yearly rate / 12)
-    let periodicRate = yearlyRate / 12;
-    // calculate monthly payment
-    // monthlyPayment = (p * i)/(1-(1+i)^-n)
-    let monthlyPaymentNum =
-      (principle * periodicRate) / (1 - (1 + periodicRate) ** -numPayments);
-    expect(monthlyPaymentNum).toBeCloseTo(115.0574414, 4);
-  });
-
-  // it("total number of payments is calculated correctly", function () {
-  //   // test when object has valid values
-  //   values = getTestValues("valid-values");
-  //   expect(values["amount"] * 12).toEqual(10000 * 12);
-  //   // test when object has decimal-values
-  //   values = getTestValues("decimal-values");
-  // });
-
-  //   values = getTestValues("decimal");
-  // });
-  // test when object has zero-values
-  // test when object has invalid rate
-  // test when input is empty-object
-  // test when input is null
-  // test when object has null-values
-  // test when object has negative-values
-  // test when input is an array
-  // test when object has array values
-  // test when input is a string
-  // test when object has string values
-
-  // it("periodic interest rate is correct", function () {
   // test when object has valid values
   // test when object has zero-values
   // test when object has decimal-values
