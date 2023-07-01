@@ -153,6 +153,47 @@ describe("calculateMonthlyPayment is calculating accurately", function () {
   // test when object has string values
 });
 
+// TEST FOR ACCURATE OUTPUT
+describe("calculateMonthlyPayment is returning in the correct format", function () {
+  it("calculateMonthlyPayment should return a result in string format", function () {
+    // test when object has valid values
+    result = calculateMonthlyPayment(getTestValues("valid-values"));
+    expect(result).toBeInstanceOf(String);
+    // test when object has decimal values
+    result = calculateMonthlyPayment(getTestValues("decimal-values"));
+    expect(result).toBeInstanceOf(String);
+  });
+  // test when object has zero-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+  it("calculateMonthlyPayment should return a result with 2 decimal places", function () {
+    // test when object has valid values
+    result = calculateMonthlyPayment(getTestValues("valid-values"));
+    expect(result.charAt(result.length - 3)).toBe(".");
+    // test when object has decimal values
+    result = calculateMonthlyPayment(getTestValues("decimal-values"));
+    expect(result.charAt(result.length - 3)).toBe(".");
+  });
+  // it("should return a result with 2 decimal places", function () {
+  // test when object has zero-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+});
+
 // PARAMETERS VALID
 describe("calculateMonthlyPayment has required parameters", function () {
   // parameter is an object
@@ -273,33 +314,3 @@ describe("calculateMonthlyPayment has valid values", function () {
   // test when input is a string
   // test when object has string values
 });
-
-// TEST FOR ACCURATE OUTPUT
-// describe("calculateMonthlyPayment is returning in the correct format", function () {
-// it("should return a result in string format", function () {
-// test when object has valid values
-// test when object has zero-values
-// test when object has decimal-values
-// test when object has invalid rate
-// test when input is empty-object
-// test when input is null
-// test when object has null-values
-// test when object has negative-values
-// test when input is an array
-// test when object has array values
-// test when input is a string
-// test when object has string values
-// it("should return a result with 2 decimal places", function () {
-// test when object has valid values
-// test when object has zero-values
-// test when object has decimal-values
-// test when object has invalid rate
-// test when input is empty-object
-// test when input is null
-// test when object has null-values
-// test when object has negative-values
-// test when input is an array
-// test when object has array values
-// test when input is a string
-// test when object has string values
-// });
