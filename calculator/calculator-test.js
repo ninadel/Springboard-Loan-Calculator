@@ -116,7 +116,6 @@ describe("calculateMonthlyPayment has required parameters", function () {
     values = getTestValues("string-values");
     expect(values).toEqual(jasmine.any(Object));
   });
-  // expect(result).toBeDefined();
   // object has an amount key
   it("the object has the required keys", function () {
     values = getTestValues("valid");
@@ -169,45 +168,6 @@ describe("calculateMonthlyPayment has required parameters", function () {
     for (key of objectKeys) {
       expect(values[key]).toBeDefined();
     }
-
-    // values = getTestValues("valid");
-    // expect(values["amount"]).toBeDefined();
-    // values = getTestValues("empty-object");
-    // expect(values["amount"]).not.toBeDefined();
-    // values = getTestValues("missing");
-    // expect(function () {
-    //   values["amount"];
-    // }).toThrowError();
-    // values = getTestValues("negative-values");
-    // expect(values["amount"]).toBeDefined();
-    // expect(result).toBeDefined();
-    // object has a years key
-    // it("the object has a years key", function () {
-    //   values = getTestValues("valid");
-    //   expect(values["years"]).toBeDefined();
-    //   values = getTestValues("empty-object");
-    //   expect(values["years"]).not.toBeDefined();
-    //   values = getTestValues("missing");
-    //   expect(function () {
-    //     values["years"];
-    //   }).toThrowError();
-    //   values = getTestValues("negative-values");
-    //   expect(values["years"]).toBeDefined();
-    // });
-    //   // expect(result).toBeDefined();
-    //   // object has a rate key
-    // it("the object has a rate key", function () {
-    //   values = getTestValues("valid");
-    //   expect(values["rate"]).toBeDefined();
-    //   values = getTestValues("empty-object");
-    //   expect(values["rate"]).not.toBeDefined();
-    //   values = getTestValues("missing");
-    //   expect(function () {
-    //     values["rate"];
-    //   }).toThrowError();
-    //   values = getTestValues("negative-values");
-    //   expect(values["rate"]).toBeDefined();
-    // });
   });
 });
 
