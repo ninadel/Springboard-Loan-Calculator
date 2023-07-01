@@ -13,7 +13,7 @@
 // it extracts values from the object and runs a calculation
 
 let tests = [
-  "valid",
+  "valid-values",
   "zero",
   "empty-object",
   "null",
@@ -28,7 +28,7 @@ let tests = [
 const objectKeys = ["amount", "years", "rate"];
 
 function getTestValues(i) {
-  if (i === "valid") {
+  if (i === "valid-values") {
     return {
       amount: 10000,
       years: 5,
@@ -42,9 +42,9 @@ function getTestValues(i) {
     };
   } else if (i === "decimal-values") {
     return {
-      amount: 10000.1,
-      years: 5.1,
-      rate: 0.1,
+      amount: 10000.12,
+      years: 5.13,
+      rate: 0.12,
     };
   } else if (i === "invalid-rate") {
     return {
@@ -91,7 +91,7 @@ function getTestValues(i) {
 describe("calculateMonthlyPayment has required parameters", function () {
   // parameter is an object
   it("the function parameter is an object", function () {
-    values = getTestValues("valid");
+    values = getTestValues("valid-values");
     expect(values).toEqual(jasmine.any(Object));
     values = getTestValues("zero-values");
     expect(values).toEqual(jasmine.any(Object));
@@ -118,7 +118,7 @@ describe("calculateMonthlyPayment has required parameters", function () {
   });
   // object has an amount key
   it("the object has the required keys", function () {
-    values = getTestValues("valid");
+    values = getTestValues("valid-values");
     for (key of objectKeys) {
       expect(values[key]).toBeDefined();
     }
@@ -168,72 +168,139 @@ describe("calculateMonthlyPayment has required parameters", function () {
 });
 
 // TEST FOR VALID VALUES
-// describe("calculateMonthlyPayment has valid values", function () {
+describe("calculateMonthlyPayment has valid values", function () {
+  it("values is in number format", function () {
+    // test when object has valid values
+    values = getTestValues("valid-values");
+    expect(values["amount"]).toBeInstanceOf(Number);
+    expect(values["years"]).toBeInstanceOf(Number);
+    expect(values["rate"]).toBeInstanceOf(Number);
 
-//   it("values is in number format", function () {
-// test when object has valid values
-// test when object has zero-values
-// test when object has decimal-values
-// test when object has invalid rate
-// test when input is empty-object
-// test when input is null
-// test when object has null-values
-// test when object has negative-values
-// test when input is an array
-// test when object has array values
-// test when input is a string
-// test when object has string values
-// test when object has valid values
-
-//   it("values are within range", function () {
-// test when object has valid values
-// test when object has zero-values
-// test when object has decimal-values
-// test when object has invalid rate
-// test when input is empty-object
-// test when input is null
-// test when object has null-values
-// test when object has negative-values
-// test when input is an array
-// test when object has array values
-// test when input is a string
-// test when object has string values
-// test when object has valid values
+    // test when object has decimal-values
+    values = getTestValues("decimal-values");
+    expect(values["amount"]).toBeInstanceOf(Number);
+    expect(values["years"]).toBeInstanceOf(Number);
+    expect(values["rate"]).toBeInstanceOf(Number);
+  });
+  // test when object has zero-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+  // test when object has valid values
+  //   it("values are within range", function () {
+  // test when object has valid values
+  // test when object has zero-values
+  // test when object has decimal-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+});
 
 // TEST FOR ACCURATE CALCULATIONS
-// describe("calculateMonthlyPayment is calculating accurately", function () {
+describe("calculateMonthlyPayment is calculating accurately", function () {
+  it("monthlyPaymentNum is accurate when inputs are valid", function () {
+    let principle = 10000;
+    let years = (values = 10);
+    let yearlyRate = 0.07;
+    // n = total number of payments (years * 12)
+    let numPayments = years * 12;
+    // i = periodic interest rate (in our case yearly rate / 12)
+    let periodicRate = yearlyRate / 12;
+    // calculate monthly payment
+    // monthlyPayment = (p * i)/(1-(1+i)^-n)
+    let monthlyPaymentNum =
+      (principle * periodicRate) / (1 - (1 + periodicRate) ** -numPayments);
+    expect(monthlyPaymentNum).toBeCloseTo(116.1084792, 4);
+  });
+  it("monthlyPaymentNum is accurate when inputs are decimals", function () {
+    let principle = 10000.11111;
+    let years = 10.22222;
+    let yearlyRate = 0.0713333;
+    // n = total number of payments (years * 12)
+    let numPayments = years * 12;
+    // i = periodic interest rate (in our case yearly rate / 12)
+    let periodicRate = yearlyRate / 12;
+    // calculate monthly payment
+    // monthlyPayment = (p * i)/(1-(1+i)^-n)
+    let monthlyPaymentNum =
+      (principle * periodicRate) / (1 - (1 + periodicRate) ** -numPayments);
+    expect(monthlyPaymentNum).toBeCloseTo(115.0574414, 4);
+  });
 
-// it("total number of payments is calculated correctly", function () {
-// test when object has valid values
-// test when object has zero-values
-// test when object has decimal-values
-// test when object has invalid rate
-// test when input is empty-object
-// test when input is null
-// test when object has null-values
-// test when object has negative-values
-// test when input is an array
-// test when object has array values
-// test when input is a string
-// test when object has string values
-// test when object has valid values
+  // it("total number of payments is calculated correctly", function () {
+  //   // test when object has valid values
+  //   values = getTestValues("valid-values");
+  //   expect(values["amount"] * 12).toEqual(10000 * 12);
+  //   // test when object has decimal-values
+  //   values = getTestValues("decimal-values");
+  // });
 
-// it("periodic interest rate is correct", function () {
-// test when object has valid values
-// test when object has zero-values
-// test when object has decimal-values
-// test when object has invalid rate
-// test when input is empty-object
-// test when input is null
-// test when object has null-values
-// test when object has negative-values
-// test when input is an array
-// test when object has array values
-// test when input is a string
-// test when object has string values
-// test when object has valid values
+  //   values = getTestValues("decimal");
+  // });
+  // test when object has zero-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+
+  // it("periodic interest rate is correct", function () {
+  // test when object has valid values
+  // test when object has zero-values
+  // test when object has decimal-values
+  // test when object has invalid rate
+  // test when input is empty-object
+  // test when input is null
+  // test when object has null-values
+  // test when object has negative-values
+  // test when input is an array
+  // test when object has array values
+  // test when input is a string
+  // test when object has string values
+});
 
 // TEST FOR ACCURATE OUTPUT
 // describe("calculateMonthlyPayment is returning in the correct format", function () {
 // it("should return a result in string format", function () {
+// test when object has valid values
+// test when object has zero-values
+// test when object has decimal-values
+// test when object has invalid rate
+// test when input is empty-object
+// test when input is null
+// test when object has null-values
+// test when object has negative-values
+// test when input is an array
+// test when object has array values
+// test when input is a string
+// test when object has string values
 // it("should return a result with 2 decimal places", function () {
+// test when object has valid values
+// test when object has zero-values
+// test when object has decimal-values
+// test when object has invalid rate
+// test when input is empty-object
+// test when input is null
+// test when object has null-values
+// test when object has negative-values
+// test when input is an array
+// test when object has array values
+// test when input is a string
+// test when object has string values
+// });
