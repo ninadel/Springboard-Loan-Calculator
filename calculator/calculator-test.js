@@ -130,10 +130,6 @@ describe("calculateMonthlyPayment has required parameters", function () {
     for (key of objectKeys) {
       expect(values[key]).toBeDefined();
     }
-    values = getTestValues("zero-values");
-    for (key of objectKeys) {
-      expect(values[key]).toBeDefined();
-    }
     values = getTestValues("empty-object");
     for (key of objectKeys) {
       expect(values[key]).not.toBeDefined();
@@ -171,113 +167,73 @@ describe("calculateMonthlyPayment has required parameters", function () {
   });
 });
 
-// // VALID VALUES
+// TEST FOR VALID VALUES
 // describe("calculateMonthlyPayment has valid values", function () {
+
 //   it("values is in number format", function () {
-//     values = getTestValues("valid");
-//     expect(values["amount"]).toBeInstanceOf(Number);
-//     expect(values["years"]).toBeInstanceOf(Number);
-//     expect(values["rate"]).toBeInstanceOf(Number);
-//     values = getTestValues("empty-object");
-//     expect(values["amount"]).not.toBeDefined();
-//     expect(values["years"]).not.toBeDefined();
-//     expect(values["rate"]).not.toBeDefined();
-//     values = getTestValues("missing");
-//     expect(function () {
-//       values["amount"];
-//     }).toThrowError();
-//     expect(function () {
-//       values["years"];
-//     }).toThrowError();
-//     expect(function () {
-//       values["rate"];
-//     }).toThrowError();
-//     values = getTestValues("negative-values");
-//     expect(values["amount"]).toBeInstanceOf(Number);
-//     expect(values["years"]).toBeInstanceOf(Number);
-//     expect(values["rate"]).toBeInstanceOf(Number);
-//   });
+// test when object has valid values
+// test when object has zero-values
+// test when object has decimal-values
+// test when object has invalid rate
+// test when input is empty-object
+// test when input is null
+// test when object has null-values
+// test when object has negative-values
+// test when input is an array
+// test when object has array values
+// test when input is a string
+// test when object has string values
+// test when object has valid values
+
 //   it("values are within range", function () {
-//     values = getTestValues("valid");
-//     expect(parseFloat(values["amount"])).toBeGreaterThan(0);
-//     expect(parseFloat(values["years"])).toBeGreaterThan(0);
-//     expect(parseFloat(values["rate"])).toBeGreaterThan(0);
-//     expect(parseFloat(values["rate"])).toBeLessThan(1);
-//     values = getTestValues("empty-object");
-//     expect(parseFloat(values["amount"])).toBeNaN();
-//     expect(parseFloat(values["years"])).toBeNaN();
-//     expect(parseFloat(values["rate"])).toBeNaN();
-//     // values = getTestValues("missing");
-//     // expect(parseFloat(values["amount"])).toBeNaN();
-//     // expect(parseFloat(values["years"])).toBeNaN();
-//     // expect(parseFloat(values["rate"])).toBeNaN();
-//     values = getTestValues("negative-values");
-//     expect(parseFloat(values["amount"])).not.toBeGreaterThan(0);
-//     expect(parseFloat(values["years"])).not.toBeGreaterThan(0);
-//     expect(parseFloat(values["rate"])).not.toBeGreaterThan(0);
-//     expect(parseFloat(values["rate"])).toBeLessThan(1);
-//   });
-// });
+// test when object has valid values
+// test when object has zero-values
+// test when object has decimal-values
+// test when object has invalid rate
+// test when input is empty-object
+// test when input is null
+// test when object has null-values
+// test when object has negative-values
+// test when input is an array
+// test when object has array values
+// test when input is a string
+// test when object has string values
+// test when object has valid values
 
-describe("calculateMonthlyPayment is calculating intermediary values correctly", function () {
-  it("values are converted to float", function () {
-    values = getTestValues("valid");
-    values["amount"] = parseFloat(values["amount"]);
-    expect(values["amount"]).not.toBeInstanceOf(String);
-    expect(values["amount"]).toBeInstanceOf(Number);
-    values["years"] = parseFloat(values["years"]);
-    expect(values["years"]).not.toBeInstanceOf(String);
-    expect(values["years"]).toBeInstanceOf(Number);
-    values["rate"] = parseFloat(values["rate"]);
-    expect(values["rate"]).not.toBeInstanceOf(String);
-    expect(values["rate"]).toBeInstanceOf(Number);
-    // values = getTestValues("empty-object");
-    // values = getTestValues("missing");
-    // values = getTestValues("negative-values");
-  });
-  // it("total number of payments is calculated correctly", function () {
-  //   values = getTestValues("valid");
-  //   expect(values["years"] * 12).toEqual(60);
-  //   // values = getTestValues("empty-object");
-  //   // values = getTestValues("missing");
-  //   values = getTestValues("negative-values");
-  //   expect(values["years"] * 12).toEqual(-60);
-  // });
-  // it("periodic interest rate is correct", function () {
-  //   values = getTestValues("valid");
-  //   expect(values["rate"] / 12).toBeCloseTo(0.0058, 4);
-  //   values = getTestValues("negative-values");
-  //   expect(values["rate"] / 12).toBeCloseTo(-0.0058, 4);
-  // });
-  //   //   // check that numerator of calculation is correct
-  //   //   it("numerator of calculation is correct", function () {});
-  //   //   // check that denominator of calculation is correct
-  //   //   it("denominator of calculation is correct", function () {});
-  //   //   // check that calculated monthly payment is correct
-  //   //   it("calculated monthly payment is correct", function () {});
-});
+// TEST FOR ACCURATE CALCULATIONS
+// describe("calculateMonthlyPayment is calculating accurately", function () {
 
+// it("total number of payments is calculated correctly", function () {
+// test when object has valid values
+// test when object has zero-values
+// test when object has decimal-values
+// test when object has invalid rate
+// test when input is empty-object
+// test when input is null
+// test when object has null-values
+// test when object has negative-values
+// test when input is an array
+// test when object has array values
+// test when input is a string
+// test when object has string values
+// test when object has valid values
+
+// it("periodic interest rate is correct", function () {
+// test when object has valid values
+// test when object has zero-values
+// test when object has decimal-values
+// test when object has invalid rate
+// test when input is empty-object
+// test when input is null
+// test when object has null-values
+// test when object has negative-values
+// test when input is an array
+// test when object has array values
+// test when input is a string
+// test when object has string values
+// test when object has valid values
+
+// TEST FOR ACCURATE OUTPUT
 // describe("calculateMonthlyPayment is returning in the correct format", function () {
-//   // check that the returned value is a string
-//   // check that the returned string value has a 2 decimal places
-// });
-
-// it("should calculate the monthly rate correctly", function () {
-//   // provide values and get payment from calculateMontlyPayment function
-//   // take yearly rate, divide by 12
-//   // calculateMontlyPayment function(?)
-//   // what are the edge cases?
-//   // what about negative value
-//   // what about wrong format? (string, array)
-//   // what about empty?
-//   // provide values and check monthly payment
-// });
-
+// it("should return a result in string format", function () {
 // it("should return a result with 2 decimal places", function () {
-//   // provide values to calculateMonthlyPayment function as object
-//   // get result from calculateMonthlyPayment function in string format
-//   // check result string, look for position of decimal within string, not float because that could be rounded to zero or one place after decimal
-//   // ..
-// });
-
-/// etc
